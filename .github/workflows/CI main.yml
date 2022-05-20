@@ -25,7 +25,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
         #run: mvn  --settings settings.xml --file pom.xml deploy -X
        ## run: mvn clean source:jar deploy -DuniqueVersion=false -Dmaven.source.useDefaultManifestFile=true -Dmaven.source.includePom=true -Dmaven.install.skip=true -DdeplyAtEnd=true -DaltDeploymentRepository='github::default::https://maven.pkg.github.com/jesusrh12/ffm-ne-back-jv-lib-commons'
-        run: mvn  deploy -DuniqueVersion=false -Dmaven.source.useDefaultManifestFile=true -Dmaven.source.includePom=true -DaltDeploymentRepository='github::default::https://maven.pkg.github.com/organizacionkelly/new-repo-maven'
+        run: mvn  deploy -DuniqueVersion=false -Dmaven.source.useDefaultManifestFile=true -Dmaven.source.includePom=true -DaltDeploymentRepository='github::default::https://maven.pkg.github.com/kelly1311/new-repo-maven'
       
      #login docker hub
       - name: Login to Docker Hub
