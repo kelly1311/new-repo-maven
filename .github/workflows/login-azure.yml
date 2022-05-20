@@ -1,0 +1,41 @@
+on:
+  push:
+     branches: [develop]
+
+env:
+REGISTRY_NAME: kelly1311
+  IMAGE: app-hello
+  TAG: app-maven-v2
+  VERSION: 11
+  DISTRIBUTION: adopt
+
+jobs:  
+  deploy_azure:
+      runs-on: ubuntu-latest
+      needs: [Publish_package_and_image_build]
+      steps:
+      - uses: actions/checkout@v2
+        #login en azure
+      - uses: azure/login@v1
+        with:
+          username: ${{ secrets.USER_AZURE }}
+          password: ${{ secrets.PASSWORD_AZURE }}
+      - run: |
+          az login
+
+      # Login to Docker Hub
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.USER_DOCKER }}
+          password: ${{ secrets.PASSWORD_DOCKER }}
+      - name: Docker registry download   
+        run: docker pull ${{env.REGISTRY_NAME}}/${{IMAGE}}:${{TAG}} 
+        run: docker images   
+
+      # Deploy app to AKS
+      - name: Deploy
+        uses: azure/k8s-deploy@v1
+        with:
+          manifests: |
+            ${{ github.workspace }}/manifests/${{env.MANIFESTS_YML}}
