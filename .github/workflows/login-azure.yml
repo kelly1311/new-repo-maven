@@ -3,7 +3,7 @@ on:
      branches: [develop]
 
 env:
-REGISTRY_NAME: kelly1311
+  REGISTRY_NAME: kelly1311
   IMAGE: app-hello
   TAG: app-maven-v2
   VERSION: 11
