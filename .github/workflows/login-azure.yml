@@ -17,8 +17,8 @@ jobs:
         #login en azure
       - uses: azure/login@v1
         with:
-         
-      - run: |
-          az login
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+
 
      

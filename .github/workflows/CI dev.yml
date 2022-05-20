@@ -8,6 +8,7 @@ env:
   TAG: app-maven-v3
   VERSION: 11
   DISTRIBUTION: adopt
+  MANIFESTS_YML: deploy.yml
 
 jobs:    
   test:
@@ -64,9 +65,7 @@ jobs:
       - uses: actions/checkout@v2
         #login en azure
       - uses: azure/login@v1
-        with:
-          username: ${{}}
-          password: ${{}}
+       
       - run: |
           az login
 
@@ -84,6 +83,7 @@ jobs:
       - name: Deploy
         uses: azure/k8s-deploy@v1
         with:
+          action: deploy
           manifests: |
             ${{ github.workspace }}/manifests/${{env.MANIFESTS_YML}}
         
