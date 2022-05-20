@@ -17,8 +17,7 @@ jobs:
         #login en azure
       - uses: azure/login@v1
         with:
-          username: ${{ secrets.USER_AZURE }}
-          password: ${{ secrets.PASSWORD_AZURE }}
+         
       - run: |
           az login
 
