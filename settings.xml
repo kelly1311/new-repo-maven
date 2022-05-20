@@ -10,6 +10,10 @@
       <id>github</id>
       <repositories>
         <repository>
+          <id>central</id>
+          <url>https://repo1.maven.org/maven2</url>
+        </repository>
+        <repository>
           <id>github</id>
           <name>GitHub kelly1311 Apache Maven Packages</name>
           <url>https://maven.pkg.github.com/kelly1311</url>
