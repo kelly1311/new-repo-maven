@@ -3,21 +3,10 @@ on:
     branches: [main]
 
 jobs:    
-  Test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up JDK
-        uses: actions/setup-java@v2
-        with:
-          java-version: '11'
-          distribution: 'adopt'
-      - name: Test
-        run: mvn --batch-mode test
 
   Publish_package_and_image_build:
     runs-on: ubuntu-latest
-    needs: [Test]
+    #needs: [Test]
     permissions: 
       contents: read
       packages: write
@@ -28,6 +17,8 @@ jobs:
         with:
           java-version: 11
           distribution: 'adopt'
+      - name: Set up Maven Settings for deploy
+        uses: s4u/maven-settings-action@v2.1.1
       - name: Deploy to Github Package Registry
         env:
           GITHUB_USERNAME: ${{ secrets.USER_GITHUB }}
