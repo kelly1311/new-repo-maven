@@ -40,7 +40,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: kelly1311/app-hello:maven
+          tags: kelly1311/app-hello:maven-v1
   
         
        
